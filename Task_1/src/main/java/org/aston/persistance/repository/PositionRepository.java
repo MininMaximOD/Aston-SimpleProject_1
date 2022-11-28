@@ -6,4 +6,6 @@ public class PositionRepository extends AbstractCRUDRepository<PositionEntity, L
     protected PositionRepository() {
         super(PositionEntity.class);
     }
+
+
 }

@@ -2,6 +2,7 @@ package org.aston.persistance.repository;
 
 import com.sun.xml.bind.v2.model.core.ID;
 import org.aston.persistance.entity.AbstractModifyEntity;
+import org.aston.persistance.entity.ProjectEntity;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
