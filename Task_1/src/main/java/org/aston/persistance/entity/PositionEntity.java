@@ -25,5 +25,4 @@ public class PositionEntity extends AbstractModifyEntity {
 
     @Column(name = "skill_level")
     private SkillLevel skillLevel;
-
 }

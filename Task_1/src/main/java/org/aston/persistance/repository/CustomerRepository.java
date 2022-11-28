@@ -1,6 +1,9 @@
 package org.aston.persistance.repository;
 
 import org.aston.persistance.entity.CustomerEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.EntityManager;
 
 public class CustomerRepository extends AbstractCRUDRepository<CustomerEntity, Long>{
 
