@@ -33,7 +33,13 @@ public class CustomerService {
     }
 
     @Transactional
-    public Collection<CustomerEntity> findAll(){
-        return customerRepository.findAll();
+    public Collection<CustomerEntity> findAll(boolean withDependencies){
+        if(withDependencies){
+            final Collection<CustomerEntity> customers = customerRepository.findAll();
+            customers.stream().forEach(s -> s.getProjects());
+            return customers;
+        }else {
+            return customerRepository.findAll();
+        }
     }
 }

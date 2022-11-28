@@ -33,7 +33,7 @@ public class EmployeeService {
     }
 
     @Transactional
-    public Collection<EmployeeEntity> findAll(){
+    public Collection<EmployeeEntity> findAll(boolean withDependencies){
         return employeeRepository.findAll();
     }
 }

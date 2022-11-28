@@ -34,7 +34,7 @@ public class PositionService {
     }
 
     @Transactional
-    public Collection<PositionEntity> findAll(){
+    public Collection<PositionEntity> findAll(boolean withDependencies){
         return positionRepository.findAll();
     }
 }
