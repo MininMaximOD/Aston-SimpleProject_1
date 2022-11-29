@@ -1,5 +1,6 @@
 package org.aston;
 
+import org.aston.config.RestConfig;
 import org.aston.config.RootConfig;
 import org.aston.config.WebConfig;
 import org.springframework.web.WebApplicationInitializer;
@@ -25,6 +26,12 @@ public class Application implements WebApplicationInitializer {
 
     ServletRegistration.Dynamic servlet = servletContext.addServlet("servlet", new DispatcherServlet(appContext));
     servlet.addMapping("/welcome");
+
+    AnnotationConfigWebApplicationContext restContext = new AnnotationConfigWebApplicationContext();
+    appContext.register(RestConfig.class);
+
+    ServletRegistration.Dynamic restServlet = servletContext.addServlet("restServlet", new DispatcherServlet(appContext));
+    restServlet.addMapping("/api", "/api/*");
 
 
     }
