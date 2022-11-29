@@ -3,6 +3,7 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.ProjectEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class ProjectRestController {
     @Autowired
     private Admin admin;
 
-    @RequestMapping(path="/projects")
+    @RequestMapping(path="/projects", produces = MediaType.APPLICATION_JSON_VALUE)
     public String homeProjectPage(Model model){
         Collection<ProjectEntity> allProjects = admin.findAllProjects();
         model.addAllAttributes(allProjects);

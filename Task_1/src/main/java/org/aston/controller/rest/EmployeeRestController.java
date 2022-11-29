@@ -3,6 +3,7 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.EmployeeEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class EmployeeRestController {
     @Autowired
     private Admin admin;
 
-    @RequestMapping(path="/employees")
+    @RequestMapping(path="/employees", produces = MediaType.APPLICATION_JSON_VALUE)
     public String homeEmployeePage(Model model){
         Collection<EmployeeEntity> allEmployees = admin.findAllEmployees();
         model.addAllAttributes(allEmployees);

@@ -3,6 +3,7 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.CustomerEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
@@ -16,7 +17,7 @@ public class CustomerRestController {
     @Autowired
     private Admin admin;
 
-    @GetMapping(path="/customers")
+    @GetMapping(path="/customers", produces = MediaType.APPLICATION_JSON_VALUE)
     public String homeCustomerPage(Model model){
         Collection<CustomerEntity> allCustomers = admin.findAllCustomers();
         model.addAllAttributes(allCustomers);

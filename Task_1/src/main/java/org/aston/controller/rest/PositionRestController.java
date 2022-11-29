@@ -3,6 +3,7 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.PositionEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class PositionRestController {
     @Autowired
     private Admin admin;
 
-    @RequestMapping(path="/positions")
+    @RequestMapping(path="/positions", produces = MediaType.APPLICATION_JSON_VALUE)
     public String homePositionPage(Model model){
         Collection<PositionEntity> allPositions = admin.findAllPositions();
         model.addAllAttributes(allPositions);
