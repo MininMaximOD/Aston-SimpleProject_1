@@ -1,6 +1,5 @@
 package org.aston.service;
 
-import org.aston.persistance.entity.CustomerEntity;
 import org.aston.persistance.entity.PositionEntity;
 import org.aston.persistance.repository.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class PositionService {
     private PositionRepository positionRepository;
 
     @Transactional
-    public void create(PositionEntity position){
+    public void save(PositionEntity position){
         if (position == null){
             throw new IllegalArgumentException("Entity is null");
         }

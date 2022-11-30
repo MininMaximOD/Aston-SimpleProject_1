@@ -3,42 +3,38 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.EmployeeEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/employees")
 public class EmployeeRestController {
 
     @Autowired
     private Admin admin;
 
-    @RequestMapping(path="/employees", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String homeEmployeePage(Model model){
+    @GetMapping
+    public Collection<EmployeeEntity> homeEmployeePage(Model model){
         Collection<EmployeeEntity> allEmployees = admin.findAllEmployees();
         model.addAllAttributes(allEmployees);
-        return "employee_view";}
+        return allEmployees;}
 
-    @PostMapping("/employee/save")
+    @PostMapping("/save")
     public RedirectView save(@ModelAttribute("employeeSave") EmployeeEntity employee) {
-        admin.createEmployee(employee);
+        admin.saveEmployee(employee);
         return new RedirectView("employees");
     }
 
-    @PostMapping("/employee/delete")
+    @PostMapping("/delete")
     public RedirectView delete(@ModelAttribute("employeeDelete") EmployeeEntity employee){
         admin.deleteEmployee(employee);
         return new RedirectView("employees");
     }
 
-    @PostMapping("/employee/update")
+    @PostMapping("/update")
     public RedirectView update(@ModelAttribute("employeeUpdate") EmployeeEntity employee){
         admin.updateEmployee(employee);
         return new RedirectView("employees");

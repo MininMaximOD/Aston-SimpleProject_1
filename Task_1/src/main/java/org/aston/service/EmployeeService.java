@@ -15,7 +15,7 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Transactional
-    public void create(EmployeeEntity employee){
+    public void save(EmployeeEntity employee){
         if (employee == null){
             throw new IllegalArgumentException("Entity is null");
         }

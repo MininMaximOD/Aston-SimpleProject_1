@@ -1,6 +1,5 @@
 package org.aston.service;
 
-import org.aston.persistance.entity.CustomerEntity;
 import org.aston.persistance.entity.ProjectEntity;
 import org.aston.persistance.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class ProjectService {
     private ProjectRepository projectRepository;
 
     @Transactional
-    public void create(ProjectEntity project){
+    public void save(ProjectEntity project){
         if (project == null){
             throw new IllegalArgumentException("Entity is null");
         }

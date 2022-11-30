@@ -35,8 +35,8 @@ public class Admin {
         return employeeService.findAll(false);
     }
 
-    public void createEmployee(EmployeeEntity employee){
-        employeeService.create(employee);
+    public void saveEmployee(EmployeeEntity employee){
+        employeeService.save(employee);
     }
     public void updateEmployee(EmployeeEntity employee){
         employeeService.update(employee);
@@ -53,8 +53,8 @@ public class Admin {
         return customerService.findAll(false);
     }
 
-    public void createCustomer(CustomerEntity customer){
-        customerService.create(customer);
+    public void saveCustomer(CustomerEntity customer){
+        customerService.save(customer);
     }
     public void updateCustomer(CustomerEntity customer){
         customerService.update(customer);
@@ -71,8 +71,8 @@ public class Admin {
         return positionService.findAll(false);
     }
 
-    public void createPosition(PositionEntity position){
-        positionService.create(position);
+    public void savePosition(PositionEntity position){
+        positionService.save(position);
     }
     public void updatePosition(PositionEntity position){
         positionService.update(position);
@@ -89,8 +89,8 @@ public class Admin {
         return projectService.findAll(false);
     }
 
-    public void createProject(ProjectEntity project){
-        projectService.create(project);
+    public void saveProject(ProjectEntity project){
+        projectService.save(project);
     }
     public void updateProject(ProjectEntity project){
         projectService.update(project);

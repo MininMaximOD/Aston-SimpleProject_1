@@ -1,9 +1,7 @@
 package org.aston.controller;
 
-import org.aston.persistance.entity.CustomerEntity;
 import org.aston.persistance.entity.EmployeeEntity;
 import org.aston.service.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,7 +28,7 @@ public class EmployeeController {
 
     @PostMapping("/employee/save")
     public RedirectView save(@ModelAttribute("employeeSave") EmployeeEntity employee) {
-        admin.createEmployee(employee);
+        admin.saveEmployee(employee);
         return new RedirectView("employees");
     }
 

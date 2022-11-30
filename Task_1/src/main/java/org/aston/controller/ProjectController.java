@@ -1,11 +1,7 @@
 package org.aston.controller;
 
-import org.aston.persistance.entity.CustomerEntity;
-import org.aston.persistance.entity.EmployeeEntity;
-import org.aston.persistance.entity.PositionEntity;
 import org.aston.persistance.entity.ProjectEntity;
 import org.aston.service.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,7 +28,7 @@ public class ProjectController {
 
     @PostMapping("/project/save")
     public RedirectView save(@ModelAttribute("projectSave") ProjectEntity project) {
-        admin.createProject(project);
+        admin.saveProject(project);
         return new RedirectView("projects");
     }
 

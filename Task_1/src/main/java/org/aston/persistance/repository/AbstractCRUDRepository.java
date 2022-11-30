@@ -1,16 +1,10 @@
 package org.aston.persistance.repository;
-
-import com.sun.xml.bind.v2.model.core.ID;
 import org.aston.persistance.entity.AbstractModifyEntity;
-import org.aston.persistance.entity.ProjectEntity;
 import org.springframework.util.Assert;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
 
 public abstract class AbstractCRUDRepository<E extends AbstractModifyEntity, ID extends Serializable> implements CRUDRepository<E, ID> {
 

@@ -1,15 +1,12 @@
 package org.aston.controller;
 
-import org.aston.controller.dto.CustomerDto;
 import org.aston.persistance.entity.CustomerEntity;
 import org.aston.service.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Collection;
@@ -31,7 +28,7 @@ public class CustomerController {
 
     @PostMapping("/customer/save")
     public RedirectView save(@ModelAttribute("customerSave") CustomerEntity customerEntity) {
-        admin.createCustomer(customerEntity);
+        admin.saveCustomer(customerEntity);
         return new RedirectView("customers");
     }
 

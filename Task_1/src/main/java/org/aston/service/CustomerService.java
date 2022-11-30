@@ -15,7 +15,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     @Transactional
-    public void create(CustomerEntity customer){
+    public void save(CustomerEntity customer){
         if (customer == null){
             throw new IllegalArgumentException("Entity is null");
         }

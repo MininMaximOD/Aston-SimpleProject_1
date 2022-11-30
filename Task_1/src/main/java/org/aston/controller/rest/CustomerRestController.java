@@ -3,7 +3,6 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.CustomerEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
@@ -11,31 +10,31 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/customers")
 public class CustomerRestController {
 
     @Autowired
     private Admin admin;
 
-    @GetMapping(path="/customers", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String homeCustomerPage(Model model){
+    @GetMapping
+    public Collection<CustomerEntity> homeCustomerPage(Model model){
         Collection<CustomerEntity> allCustomers = admin.findAllCustomers();
         model.addAllAttributes(allCustomers);
-        return "customer_view";}
+        return allCustomers;}
 
-    @PostMapping("/customer/save")
+    @PostMapping("/save")
     public RedirectView save(@ModelAttribute("customerSave") CustomerEntity customerEntity) {
-        admin.createCustomer(customerEntity);
+        admin.saveCustomer(customerEntity);
         return new RedirectView("customers");
     }
 
-    @PostMapping("/customer/delete")
+    @PostMapping("/delete")
     public RedirectView delete(@ModelAttribute("customerDelete") CustomerEntity customerEntity){
         admin.deleteCustomer(customerEntity);
         return new RedirectView("customers");
     }
 
-    @PostMapping("/customer/update")
+    @PostMapping("/update")
     public RedirectView update(@ModelAttribute("customerUpdate") CustomerEntity customerEntity){
         admin.updateCustomer(customerEntity);
         return new RedirectView("customers");

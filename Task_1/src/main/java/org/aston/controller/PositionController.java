@@ -1,9 +1,7 @@
 package org.aston.controller;
 
-import org.aston.persistance.entity.CustomerEntity;
 import org.aston.persistance.entity.PositionEntity;
 import org.aston.service.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,7 +28,7 @@ public class PositionController {
 
     @PostMapping("/position/save")
     public RedirectView save(@ModelAttribute("positionSave") PositionEntity position) {
-        admin.createPosition(position);
+        admin.savePosition(position);
         return new RedirectView("positions");
     }
 

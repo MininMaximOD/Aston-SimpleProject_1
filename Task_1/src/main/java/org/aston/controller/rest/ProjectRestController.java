@@ -3,42 +3,38 @@ package org.aston.controller.rest;
 import org.aston.persistance.entity.ProjectEntity;
 import org.aston.service.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/projects")
 public class ProjectRestController {
 
     @Autowired
     private Admin admin;
 
-    @RequestMapping(path="/projects", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String homeProjectPage(Model model){
+    @GetMapping
+    public Collection<ProjectEntity> homeProjectPage(Model model){
         Collection<ProjectEntity> allProjects = admin.findAllProjects();
         model.addAllAttributes(allProjects);
-        return "project_view";}
+        return allProjects;}
 
-    @PostMapping("/project/save")
+    @PostMapping("/save")
     public RedirectView save(@ModelAttribute("projectSave") ProjectEntity project) {
-        admin.createProject(project);
+        admin.saveProject(project);
         return new RedirectView("projects");
     }
 
-    @PostMapping("/project/delete")
+    @PostMapping("/delete")
     public RedirectView delete(@ModelAttribute("projectDelete") ProjectEntity project){
         admin.deleteProject(project);
         return new RedirectView("projects");
     }
 
-    @PostMapping("/project/update")
+    @PostMapping("/update")
     public RedirectView update(@ModelAttribute("projectUpdate") ProjectEntity project){
         admin.updateProject(project);
         return new RedirectView("projects");

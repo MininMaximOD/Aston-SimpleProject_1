@@ -60,8 +60,4 @@ public class ProjectEntity extends AbstractModifyEntity{
         if(employees.contains(employee)) employees.remove(employee);
         employee.removeProject(this);
     }
-
-
-
-
 }
